@@ -1,12 +1,16 @@
 #include <cstdio>
 #include "src/bmp.h"
+const int N=10000;
 int main(){
-    bmp::bmp a(100,100);
-    for(int i=0;i<100;i++){
-            a.set_pixel(i,i,1);
-            //a.set_pixel(i,i,0);
+    bmp::bmp a(N,N);
+    for(int i=0;i<N;i++){
+        a.set_pixel(i,i,1);
+        //a.set_pixel(i,i,0);
     }
-    a.save("out.bmp");
+    for(int i=0;i<N/100;i++){
+        a.save("out.bmp");
+        //a.set_pixel(i,i,0);
+    }
     /*a.read("out.bmp");
     bmp::bmp b;
     b.read("out.bmp");

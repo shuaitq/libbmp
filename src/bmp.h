@@ -46,7 +46,6 @@ namespace bmp{
 
     class bmp{
     public:
-        bmp();
         bmp(uint32_t h,uint32_t w);
         ~bmp();
         void set_pixel(uint32_t x,uint32_t y,pixel v);
