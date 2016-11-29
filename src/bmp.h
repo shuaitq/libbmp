@@ -8,6 +8,7 @@
 namespace bmp{
 
     using pixel=bool;
+    using byte=uint8_t;
 
     struct file_header{
         uint16_t type;
@@ -46,15 +47,17 @@ namespace bmp{
     class bmp{
     public:
         bmp();
-        bmp(int h,int w);
+        bmp(uint32_t h,uint32_t w);
         ~bmp();
-        void set_pixel(int x,int y,pixel v);
-        pixel get_pixel(int x,int y);
-        bool save(const char *path);
-        bool read(const char *path);
+        void set_pixel(uint32_t x,uint32_t y,pixel v);
+        bool save(const char *path)const;
+        uint32_t height()const;
+        uint32_t width()const;
     private:
-        int height,width;
-        bool **pixels;
+        file_header file;
+        info_header info;
+        void init(uint32_t h,uint32_t w);
+        byte **bytes;
     };
 
 }

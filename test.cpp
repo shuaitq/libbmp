@@ -4,6 +4,7 @@ int main(){
     bmp::bmp a(100,100);
     for(int i=0;i<100;i++){
             a.set_pixel(i,i,1);
+            //a.set_pixel(i,i,0);
     }
     a.save("out.bmp");
     /*a.read("out.bmp");
