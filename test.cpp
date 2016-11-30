@@ -5,12 +5,8 @@ int main(){
     bmp::bmp a(N,N);
     for(int i=0;i<N;i++){
         a.set_pixel(i,i,1);
-        //a.set_pixel(i,i,0);
     }
-    for(int i=0;i<N/100;i++){
-        a.save("out.bmp");
-        //a.set_pixel(i,i,0);
-    }
+    a.save("out.bmp");
     /*a.read("out.bmp");
     bmp::bmp b;
     b.read("out.bmp");

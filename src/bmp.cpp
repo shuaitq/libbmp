@@ -16,10 +16,11 @@ namespace bmp{
     }
 
     void bmp::set_pixel(uint32_t x,uint32_t y,pixel v){
+        const byte temp=(1<<(7-y%8));
         if(v){
-            bytes[x][y/8]|=(1<<(7-y%8));
+            bytes[x][y/8]|=temp;
         }else{
-            bytes[x][y/8]&=(-1^(1<<(7-y%8)));
+            bytes[x][y/8]&=~temp;
         }
     }
 
