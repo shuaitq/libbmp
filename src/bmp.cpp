@@ -3,7 +3,7 @@
 namespace bmp{
 
     rgb::rgb(uint8_t r,uint8_t g,uint8_t b,uint8_t al):red(r),green(g),blue(b),alpha(al){}
-    
+
     bmp::bmp(uint32_t h,uint32_t w){
         init(h,w);
     }
@@ -34,7 +34,7 @@ namespace bmp{
         fwrite(&black,sizeof(rgb),1,fp);
         fwrite(&white,sizeof(rgb),1,fp);
         for(int i=0;i<height();i++){
-            fwrite(bytes[i],((width()+31)/32)*4,1,fp);
+            fwrite(bytes[i],len(),1,fp);
         }
         fclose(fp);
         return true;
@@ -66,8 +66,11 @@ namespace bmp{
         file.reserved=0;
         bytes=new byte*[h];
         for(int i=0;i<h;i++){
-            bytes[i]=new byte[((w+31)/32)*4];
+            bytes[i]=new byte[len()];
         }
     }
 
+    uint32_t bmp::len()const{
+        return info.size_image/info.height;
+    }
 }

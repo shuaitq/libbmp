@@ -56,6 +56,7 @@ namespace bmp{
         file_header file;
         info_header info;
         void init(uint32_t h,uint32_t w);
+        uint32_t len()const;
         byte **bytes;
     };
 
