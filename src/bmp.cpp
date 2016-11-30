@@ -2,8 +2,6 @@
 
 namespace bmp{
 
-    rgb::rgb(uint8_t r,uint8_t g,uint8_t b,uint8_t al):red(r),green(g),blue(b),alpha(al){}
-
     bmp::bmp(uint32_t h,uint32_t w){
         init(h,w);
     }
@@ -31,8 +29,8 @@ namespace bmp{
         }
         fwrite(&file,sizeof(file_header),1,fp);
         fwrite(&info,sizeof(info_header),1,fp);
-        fwrite(&black,sizeof(rgb),1,fp);
-        fwrite(&white,sizeof(rgb),1,fp);
+        fwrite(&black,sizeof(rgba),1,fp);
+        fwrite(&white,sizeof(rgba),1,fp);
         for(int i=0;i<height();i++){
             fwrite(bytes[i],len(),1,fp);
         }
@@ -61,7 +59,7 @@ namespace bmp{
         info.clr_used=0;
         info.clr_important=0;
         file.type='B'+('M'<<8);
-        file.off_bits=sizeof(file_header)+info.size+sizeof(rgb)*2;
+        file.off_bits=sizeof(file_header)+info.size+sizeof(rgba)*2;
         file.size=file.off_bits+info.size_image;
         file.reserved=0;
         bytes=new byte*[h];
